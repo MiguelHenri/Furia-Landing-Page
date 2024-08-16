@@ -21,7 +21,6 @@ The landing page must:
 - Introduce the team, including a brief description and images.
 - Highlight CTAs for important sections of the site, such as the news page, match schedule, and store.
 - Include links to the team’s social media accounts.
-- Display multimedia content, such as game videos and trailers.
 - Offer a accessible interface, compatible with various devices and screen sizes.
 
 ### 2.2 User
@@ -29,7 +28,7 @@ The primary users will be the 'Furiosos', gamers, and potential sponsors. They s
 
 ### 2.3 Assumptions and Dependencies
 - All graphic design and visual assets will be deducted from existing FURIA products.
-- In ideal state, the landing page will depend on external APIs to display dynamic content, such as social media updates or match results.
+- In an ideal scenario, the landing page will depend on external APIs to display dynamic content, such as social media updates or match results.
 
 ## 3. System Features and Requirements
 
