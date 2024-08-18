@@ -6,7 +6,6 @@ function NewsPost() {
         <Card shadow="sm" radius="md" withBorder>
             <Image
                 src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-8.png"
-                height={160}
                 alt="Norway"
             />
         </Card>

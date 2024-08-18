@@ -12,16 +12,16 @@ function Header() {
         { link: '', label: 'Agenda'},
         { link: '', label: 'Parceiros'},
         { link: '', label: 'Contato'},
-      ];
+    ];
 
     return (
         <Group justify="space-between" h={70}>
-            <Burger opened={opened} onClick={toggle} size="md" ml={30}/>
+            <Burger opened={opened} onClick={toggle} size="md"/>
             <Image 
                 src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png'
                 h={60}
             />
-            <Anchor mr={30} c='black'>
+            <Anchor c='black'>
                 <IconShoppingBag stroke={2} width={30} height={30}/>
             </Anchor>
         </Group>

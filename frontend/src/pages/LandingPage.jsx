@@ -1,9 +1,12 @@
+import { Center } from "@mantine/core";
 import NewsCarousel from "../components/NewsCarousel";
 
 function LandingPage() {
     return (
         <>
-            <NewsCarousel/>
+            <Center>
+                <NewsCarousel/>
+            </Center>
         </>
     )
 }

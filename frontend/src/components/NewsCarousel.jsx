@@ -5,11 +5,10 @@ function NewsCarousel() {
 
     return (
         <Carousel 
-            height={200} 
-            slideGap="md" 
             loop 
             withControls={false} 
             withIndicators
+            height='200px'
         >
             <Carousel.Slide>
                 <NewsPost/>
