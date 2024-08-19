@@ -1,6 +1,8 @@
-import { Center } from "@mantine/core";
+import { Center, Title } from "@mantine/core";
 import NewsCarousel from "../components/NewsCarousel";
 import StoreSection from "../components/StoreSection";
+import MatchesCarousel from "../components/MatchesCarousel";
+import TeamsSection from "../components/TeamsSection";
 
 function LandingPage() {
     return (
@@ -10,6 +12,15 @@ function LandingPage() {
             </Center>
 
             <StoreSection/>
+
+            <Title ml='3vw'>
+                Proximos jogos
+            </Title>
+            <Center mt='20px'>
+                <MatchesCarousel/>
+            </Center>
+
+            <TeamsSection/>
         </>
     )
 }
