@@ -12,8 +12,8 @@ function Footer() {
         { link: '', label: 'Contato'},
     ];
 
-    const linkButtons = linkData.map(l => (
-        <Anchor>
+    const linkButtons = linkData.map((l, index) => (
+        <Anchor key={index}>
             {l.label}
         </Anchor>
     ));
@@ -27,14 +27,14 @@ function Footer() {
         {icon: <IconBrandTwitch stroke={2}/>, link: ''},
     ];
 
-    const socialButtons = socialData.map(l => (
-        <Anchor>
+    const socialButtons = socialData.map((l, index) => (
+        <Anchor key={index}>
             {l.icon}
         </Anchor>
     ));
 
     return (
-        <Stack>
+        <Stack p='10px'>
             <Title>
                 Sobre nós    
             </Title> 

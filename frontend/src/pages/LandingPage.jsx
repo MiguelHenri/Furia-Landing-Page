@@ -4,7 +4,7 @@ import NewsCarousel from "../components/NewsCarousel";
 function LandingPage() {
     return (
         <>
-            <Center>
+            <Center mt='10px'>
                 <NewsCarousel/>
             </Center>
         </>

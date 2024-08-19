@@ -3,23 +3,24 @@ import NewsPost from './NewsPost';
 
 function NewsCarousel() {
 
-    return (
-        <Carousel 
-            loop 
-            withControls={false} 
-            withIndicators
-            height='200px'
+    const slides = Array.from({ length: 3 }, (_, index) => (
+        <Carousel.Slide 
+            key={index}
         >
-            <Carousel.Slide>
-                <NewsPost/>
-            </Carousel.Slide>
-            <Carousel.Slide>
-                <NewsPost/>
-            </Carousel.Slide>
-            <Carousel.Slide>
-                <NewsPost/>
-            </Carousel.Slide>
-        </Carousel>
+            <NewsPost />
+        </Carousel.Slide>
+    ));
+
+    return (
+        <div style={{ width: '80vw', height: '90vh' }}>
+            <Carousel 
+                withControls={false} 
+                withIndicators
+                slideGap='5px'
+            >
+                {slides}
+            </Carousel>
+        </div>
     );
 }
 

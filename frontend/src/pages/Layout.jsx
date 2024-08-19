@@ -5,7 +5,11 @@ import Footer from "../components/Layout/Footer";
 
 function Layout() {
     return (
-        <Flex h="100vh" direction="column" justify='flex-start' mr={30} ml={30}>
+        <Flex 
+            h="100vh"
+            direction="column"
+            justify='flex-start'
+        >
 
             <Header/>
 
