@@ -1,4 +1,4 @@
-import { Title, Group, Button, Center, Card, SimpleGrid, Anchor } from "@mantine/core";
+import { Title, Button, Center, Card, SimpleGrid, Anchor } from "@mantine/core";
 import { IconBrandValorant } from '@tabler/icons-react';
 
 function TeamsSection() {
@@ -29,7 +29,7 @@ function TeamsSection() {
                 height: '100%' 
             }}>
             <Button>
-                Ver todos
+                TODOS TIMES
             </Button>
         </div>
     );

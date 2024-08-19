@@ -3,6 +3,7 @@ import NewsCarousel from "../components/NewsCarousel";
 import StoreSection from "../components/StoreSection";
 import MatchesCarousel from "../components/MatchesCarousel";
 import TeamsSection from "../components/TeamsSection";
+import Newsletter from "../components/Newsletter";
 
 function LandingPage() {
     return (
@@ -21,6 +22,8 @@ function LandingPage() {
             </Center>
 
             <TeamsSection/>
+
+            <Newsletter/>
         </>
     )
 }
