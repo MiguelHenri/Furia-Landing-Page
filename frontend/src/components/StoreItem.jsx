@@ -16,10 +16,10 @@ function StoreItem() {
                 src={mockItem.image}
                 alt={mockItem.alt}
             />
-            <Text>
+            <Text fw={700}>
                 {mockItem.title}
             </Text>
-            <Text>
+            <Text c='furiagray.0'>
                 {mockItem.price}
             </Text>
         </Stack>

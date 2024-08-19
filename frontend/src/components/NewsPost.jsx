@@ -13,8 +13,7 @@ function NewsPost() {
     return (
         <Center>
             <Card 
-                radius="lg" 
-                withBorder
+                radius="xl"
                 h='90vh'
                 w='80vw'
             >
@@ -36,10 +35,10 @@ function NewsPost() {
                 </Card.Section>
                 <Card.Section>
                     <Stack p='md'>
-                        <Title> 
+                        <Title c='primary.0'> 
                             {mockPost.title}
                         </Title>
-                        <Text truncate='end'> 
+                        <Text truncate='end' c='primary.0'> 
                             {mockPost.text}
                         </Text>
                     </Stack>

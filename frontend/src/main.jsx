@@ -6,6 +6,7 @@ import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import theme from './theme.js';
+import './global.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

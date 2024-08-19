@@ -1,5 +1,6 @@
 import { Carousel } from '@mantine/carousel';
 import NewsPost from './NewsPost';
+import classes from './NewsCarousel.module.css';
 
 function NewsCarousel() {
 
@@ -17,6 +18,7 @@ function NewsCarousel() {
                 withControls={false} 
                 withIndicators
                 slideGap='5px'
+                classNames={classes}
             >
                 {slides}
             </Carousel>

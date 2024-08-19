@@ -1,5 +1,6 @@
 import { Carousel } from '@mantine/carousel';
 import Match from './Match';
+import classes from './MatchesCarousel.module.css';
 
 function MatchesCarousel() {
 
@@ -13,7 +14,8 @@ function MatchesCarousel() {
 
     return (
         <div style={{ width: '30vw' }}>
-            <Carousel    
+            <Carousel
+                classNames={classes}
             >
                 {slides}
             </Carousel>

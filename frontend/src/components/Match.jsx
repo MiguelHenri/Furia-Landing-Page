@@ -31,7 +31,7 @@ function Match() {
         tournament: 'VCT AMERICAS 2024 - Stage 2',
         player1: 'FURIA Esports',
         player2: 'Leviatán',
-        gameIcon: <IconBrandValorant />,
+        gameIcon: <IconBrandValorant color='#F2F0E9'/>,
     }
 
     return (
@@ -39,14 +39,17 @@ function Match() {
             <Card
                 radius="lg" 
                 withBorder
+                style={{ 
+                    backgroundColor: '#403F3D',
+                }}
             >
                 <Group justify='space-between'>
-                    <Text>
+                    <Text c='furiagray.0'>
                         {mockMatch.date}
                     </Text>
                     {mockMatch.gameIcon}
                 </Group>
-                <Text>
+                <Text fw={700}>
                     {mockMatch.tournament}
                 </Text>
                 <Text>

@@ -41,11 +41,11 @@ function Footer() {
                 Sobre nós    
             </Title> 
             <Text>
-                Somos FURIA. Uma organização de esports que nasceu do desejo de
+                Somos <strong>FURIA</strong>. Uma organização de esports que nasceu do desejo de
                 representar o Brasil no CS e conquistou muito mais que isso: expandimos
                 nossas ligas, disputamos os principais títulos, adotamos novos objetivos e
                 ganhamos um propósito maior. Somos muito mais que o sucesso competitivo.
-                Somos um movimento sociocultural.
+                Somos um <strong>movimento sociocultural</strong>.
             </Text>
             <Title>
                 Links

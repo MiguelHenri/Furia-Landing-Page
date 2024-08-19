@@ -13,9 +13,10 @@ function TeamsSection() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    backgroundColor: '#403F3D'
                 }}
             >
-                <IconBrandValorant height={50} width={50}/>
+                <IconBrandValorant height={50} width={50} color='#F2F0E9'/>
             </Card>
         </Anchor>
     ));

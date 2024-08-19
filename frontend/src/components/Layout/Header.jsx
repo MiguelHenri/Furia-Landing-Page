@@ -26,7 +26,7 @@ function Header() {
                     h={50}
                 />
             </Anchor>
-            <Anchor c='black'>
+            <Anchor>
                 <IconShoppingBag stroke={2} width={30} height={30}/>
             </Anchor>
         </Group>
