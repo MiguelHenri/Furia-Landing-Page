@@ -1,7 +1,11 @@
 import { Card, Image, Stack, Title, Text, Center, Button } from "@mantine/core";
+import { IconArrowRight } from "@tabler/icons-react";
+import { useMediaQuery } from "@mantine/hooks";
 
 // needs to receive a post object.
 function NewsPost() {
+
+    const isMobile = useMediaQuery('(max-width: 768px)');
 
     const mockPost = {
         title: 'CHAMPION + FURIA',
@@ -14,14 +18,14 @@ function NewsPost() {
         <Center>
             <Card 
                 radius="xl"
-                h='90vh'
-                w='80vw'
+                h={{base:'60vh', sm:'85vh'}}
+                w={{base:'90vw', sm:'85vw'}}
             >
                 <Card.Section style={{ position: 'relative' }}>
                     <Image
                         src={mockPost.image}
                         alt={mockPost.alt}
-                        h='70vh'
+                        h={{base:'45vh', sm:'70vh'}}
                     />
                     <Button 
                         style={{
@@ -29,13 +33,15 @@ function NewsPost() {
                             bottom: '20px',
                             right: '20px',
                         }}
+                        size={isMobile ? 'sm' : 'lg'}
                     >
-                        LEIA MAIS
+                        LEIA MAIS&nbsp;
+                        <IconArrowRight/>
                     </Button>
                 </Card.Section>
                 <Card.Section>
-                    <Stack p='md'>
-                        <Title c='primary.0'> 
+                    <Stack p='xs'>
+                        <Title c='primary.0' order={isMobile? 2 : 1}> 
                             {mockPost.title}
                         </Title>
                         <Text truncate='end' c='primary.0'> 

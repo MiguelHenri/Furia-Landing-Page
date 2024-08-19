@@ -11,7 +11,7 @@ function StoreItem() {
     }
 
     return (
-        <Stack w='30vw'>
+        <Stack w={{base: '40vw', sm: '30vw', md: '25vw', lg: '20vw'}}>
             <Image
                 src={mockItem.image}
                 alt={mockItem.alt}

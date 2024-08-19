@@ -1,14 +1,17 @@
 import { Title, Button, Center, Card, SimpleGrid, Anchor } from "@mantine/core";
-import { IconBrandValorant } from '@tabler/icons-react';
+import { useMediaQuery } from "@mantine/hooks";
+import { IconArrowRight, IconBrandValorant } from '@tabler/icons-react';
 
 function TeamsSection() {
+
+    const isMobile = useMediaQuery('(max-width: 768px)');
 
     const teams = Array.from({ length: 3 }, (_, index) => (
         <Anchor key={index}>
             <Card 
                 withBorder
-                w='30vw'
-                h='20vh'
+                w={{ base:'35vw', xs: '30vw', md: '25vw' }}
+                h={{ base:'20vh', xs: '25vh', md: '30vh' }}
                 style={{ 
                     display: 'flex',
                     alignItems: 'center',
@@ -29,15 +32,18 @@ function TeamsSection() {
                 justifyContent: 'center', 
                 height: '100%' 
             }}>
-            <Button>
-                TODOS TIMES
+            <Button
+                size={isMobile ? 'sm' : 'lg'}
+            >
+                {isMobile ? 'TODOS' : 'TODOS TIMES'}
+                <IconArrowRight/>
             </Button>
         </div>
     );
 
     return (
         <>
-        <Title ml='3vw'>
+        <Title ml='2vw' mb='20px' mt='50px'>
             Times
         </Title>
         <Center>

@@ -14,7 +14,7 @@ function LandingPage() {
 
             <StoreSection/>
 
-            <Title ml='3vw'>
+            <Title ml='2vw' mt='50px'>
                 Proximos jogos
             </Title>
             <Center mt='20px'>

@@ -48,6 +48,7 @@ const theme = createTheme({
             defaultProps: {
                 size: 'md',
                 w: {base: '90vw', sm: '80vw', md: '80vw', lg:'70vw'},
+                radius: 'xl',
             }
         },
         Checkbox: {
@@ -58,16 +59,13 @@ const theme = createTheme({
         Button: {
             styles: (theme) => ({
                 root: {
+                    // dont know why i cant apply hover 
                     backgroundColor: theme.colors.furiagray[2],
-                    color: theme.colors.secondary[0],
-                    transition: 'background-color 0.3s ease',
-                    '&:hover': {
-                        backgroundColor: theme.colors.furiagray[1],
-                    },
                 },
             }),
             defaultProps: {
                 size: 'md',
+                radius: 'xl',
             },
         }
     },

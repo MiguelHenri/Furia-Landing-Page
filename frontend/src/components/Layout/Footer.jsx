@@ -5,7 +5,7 @@ import { IconBrandInstagram, IconBrandFacebook, IconBrandTwitter,
 function Footer() {
 
     const linkData = [
-        { link: '', label: 'Loja'},
+        { link: 'https://furia.gg/', label: 'Loja'},
         { link: '', label: 'Times'},
         { link: '', label: 'Agenda'},
         { link: '', label: 'Parceiros'},
@@ -13,7 +13,7 @@ function Footer() {
     ];
 
     const linkButtons = linkData.map((l, index) => (
-        <Anchor key={index}>
+        <Anchor key={index} href={l.link}>
             {l.label}
         </Anchor>
     ));
@@ -28,19 +28,19 @@ function Footer() {
     ];
 
     const socialButtons = socialData.map((l, index) => (
-        <Anchor key={index}>
+        <Anchor key={index} href={l.link}>
             {l.icon}
         </Anchor>
     ));
 
     return (
         <>
-        <Divider mt='10px'/>
-        <Stack p='10px'>
+        <Divider mt='50px' mb='30px'/>
+        <Stack ml='2vw' mr='2vw'>
             <Title>
                 Sobre nós    
             </Title> 
-            <Text>
+            <Text ta='justify'>
                 Somos <strong>FURIA</strong>. Uma organização de esports que nasceu do desejo de
                 representar o Brasil no CS e conquistou muito mais que isso: expandimos
                 nossas ligas, disputamos os principais títulos, adotamos novos objetivos e
@@ -50,13 +50,13 @@ function Footer() {
             <Title>
                 Links
             </Title>
-            <Group justify='space-between' w='80vw'>
+            <Group justify='space-around'>
                 {linkButtons}
             </Group>
             <Group justify='center' mt='20px'>
                 {socialButtons}
             </Group>
-            <Text ta='center'>
+            <Text ta='center' fz='12px'>
                 2024 Furia. All Rights Reserved.
             </Text>
         </Stack>

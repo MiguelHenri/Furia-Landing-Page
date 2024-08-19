@@ -1,5 +1,6 @@
 import { Card, Center, Group, Text } from "@mantine/core";
 import { IconBrandValorant } from '@tabler/icons-react';
+import { useMediaQuery } from "@mantine/hooks";
 
 const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
@@ -42,17 +43,18 @@ function Match() {
                 style={{ 
                     backgroundColor: '#403F3D',
                 }}
+                w={{base: '200px', xs: '300px', sm: '350px', md: '400px'}}
             >
                 <Group justify='space-between'>
-                    <Text c='furiagray.0'>
+                    <Text c='furiagray.0' fz={{base:'14px', sm: '16px'}}>
                         {mockMatch.date}
                     </Text>
                     {mockMatch.gameIcon}
                 </Group>
-                <Text fw={700}>
+                <Text fw={700} fz={{base:'16px', sm: '20px'}}>
                     {mockMatch.tournament}
                 </Text>
-                <Text>
+                <Text fz={{base:'14px', sm: '18px'}}>
                     {mockMatch.player1} X {mockMatch.player2}
                 </Text>
             </Card>

@@ -1,23 +1,33 @@
 import { Carousel } from '@mantine/carousel';
 import NewsPost from './NewsPost';
 import classes from './NewsCarousel.module.css';
+import { useMediaQuery } from '@mantine/hooks';
 
 function NewsCarousel() {
+
+    const isMobile = useMediaQuery('(max-width: 768px)');
 
     const slides = Array.from({ length: 3 }, (_, index) => (
         <Carousel.Slide 
             key={index}
         >
-            <NewsPost />
+            <div style={{ 
+                width: isMobile? '90vw' : '85vw', 
+                height: isMobile? '65vh' : '90vh',
+            }}>
+                <NewsPost />
+            </div>
         </Carousel.Slide>
     ));
 
     return (
-        <div style={{ width: '80vw', height: '90vh' }}>
+        <div style={{ 
+            width: isMobile? '90vw' : '85vw',
+            height: isMobile? '65vh' : '90vh',
+        }}>
             <Carousel 
                 withControls={false} 
                 withIndicators
-                slideGap='5px'
                 classNames={classes}
             >
                 {slides}
