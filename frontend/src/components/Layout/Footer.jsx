@@ -1,4 +1,4 @@
-import { Group, Stack, Text, Title, Anchor, Image } from "@mantine/core";
+import { Group, Stack, Text, Title, Anchor, Image, Divider } from "@mantine/core";
 import { IconBrandInstagram, IconBrandFacebook, IconBrandTwitter,
     IconBrandYoutube, IconBrandTwitch} from '@tabler/icons-react';
 
@@ -19,12 +19,12 @@ function Footer() {
     ));
 
     const socialData = [
-        {icon: <Image src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png' h={30}/>, link: ''},
-        {icon: <IconBrandInstagram stroke={2}/>, link: ''},
-        {icon: <IconBrandTwitter stroke={2}/>, link: ''},
-        {icon: <IconBrandFacebook stroke={2}/>, link: ''},
-        {icon: <IconBrandYoutube stroke={2}/>, link: ''},
-        {icon: <IconBrandTwitch stroke={2}/>, link: ''},
+        {icon: <Image src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png' h={50}/>, link: ''},
+        {icon: <IconBrandInstagram stroke={2} width={30} height={30}/>, link: ''},
+        {icon: <IconBrandTwitter stroke={2} width={30} height={30}/>, link: ''},
+        {icon: <IconBrandFacebook stroke={2} width={30} height={30}/>, link: ''},
+        {icon: <IconBrandYoutube stroke={2} width={30} height={30}/>, link: ''},
+        {icon: <IconBrandTwitch stroke={2} width={30} height={30}/>, link: ''},
     ];
 
     const socialButtons = socialData.map((l, index) => (
@@ -34,6 +34,8 @@ function Footer() {
     ));
 
     return (
+        <>
+        <Divider mt='10px'/>
         <Stack p='10px'>
             <Title>
                 Sobre nós    
@@ -51,13 +53,14 @@ function Footer() {
             <Group justify='space-between' w='80vw'>
                 {linkButtons}
             </Group>
-            <Group justify='center'>
+            <Group justify='center' mt='20px'>
                 {socialButtons}
             </Group>
             <Text ta='center'>
                 2024 Furia. All Rights Reserved.
             </Text>
         </Stack>
+        </>
     )
 }
 
