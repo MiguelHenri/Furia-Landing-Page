@@ -2,7 +2,7 @@ from database import db
 
 class StoreItem(db.Model):
     __tablename__ = 'items' # postgres table name
-    id = db.Column(db.Integer, nullable=False, autoincrement=True)
+    id = db.Column(db.Integer, nullable=False, autoincrement=True, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     price = db.Column(db.String(10), nullable=False)
     link = db.Column(db.String(300), nullable=False)

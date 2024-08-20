@@ -10,7 +10,7 @@ class MatchIcon(PyEnum):
 
 class Match(db.Model):
     __tablename__ = 'matches' # postgres table name
-    id = db.Column(db.Integer, nullable=False, autoincrement=True)
+    id = db.Column(db.Integer, nullable=False, autoincrement=True, primary_key=True)
     tournament = db.Column(db.String(100), nullable=False)
     player1 = db.Column(db.String(50), nullable=False)
     player2 = db.Column(db.String(50), nullable=False)

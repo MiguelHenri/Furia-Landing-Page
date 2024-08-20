@@ -1,6 +1,3 @@
-INSERT INTO admins (username, password_hash)
-VALUES ('FURIA', 'changeme');
-
 INSERT INTO matches (tournament, player1, player2, date, icon)
 VALUES (
     'VCT AMERICAS 2024 - Stage 2', 

@@ -59,6 +59,11 @@ $ . .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
+Make sure to create the super admin account:
+```bash
+$ python3 create_admin.py
+```
+
 Then, start the backend server by running:
 ```bash
 $ flask run

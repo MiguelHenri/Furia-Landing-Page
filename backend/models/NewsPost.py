@@ -2,7 +2,7 @@ from database import db
 
 class NewsPost(db.Model):
     __tablename__ = 'news' # postgres table name
-    id = db.Column(db.Integer, nullable=False, autoincrement=True)
+    id = db.Column(db.Integer, nullable=False, autoincrement=True, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     text = db.Column(db.String(300), nullable=False)
     link = db.Column(db.String(300), nullable=False)
