@@ -7,8 +7,24 @@ function StoreSection() {
 
     const isMobile = useMediaQuery('(max-width: 768px)');
 
-    const items = Array.from({ length: 2 }, (_, index) => (
-        <StoreItem key={index}/>
+    // should fetch to get data
+    const mockData = [
+        {
+            title: 'CAMISETA CHAMPION X FURIA MASCOT HOODIE PRETA',
+            price: 'R$179,99',
+            image: 'https://furia.gg/wp-content/uploads/2024/08/02-7.png',
+            alt: 'A imagem mostra o influenciador Brino utilizando uma camiseta do collab da Champion + FURIA. A camiseta em questão mostra a logo da FURIA com capuz e o título de ambas marcas.',
+        },
+        {
+            title: 'CAMISETA CHAMPION X FURIA COLLEGE PRETA',
+            price: 'R$179,99',
+            image: 'https://furia.gg/wp-content/uploads/2024/08/01-10.png',
+            alt: 'A imagem mostra o influenciador Brino utilizando uma camiseta do collab da Champion + FURIA. A camiseta em questão mostra uma logo personalizada da furia e o título CHAMPION no estilo college norte-americano.',
+        },
+    ]
+
+    const items = mockData.map((l, index) => (
+        <StoreItem key={index} item={l}/>
     ));
 
     return (
@@ -16,7 +32,7 @@ function StoreSection() {
         <Title ml='2vw' mb='20px'>
             Loja
         </Title>
-        <Group justify="center" gap='10vw'>
+        <Group justify="center" align='flex-start' gap='10vw'>
             {items}
         </Group>
         <Center mt='20px'>

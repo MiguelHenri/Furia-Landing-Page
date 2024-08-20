@@ -23,16 +23,7 @@ const formatTimestamp = (timestamp) => {
     return `${formattedDate} - ${formattedTime}h`;
 };
 
-// this should receive an match object
-function Match() {
-
-    const mockMatch = {
-        date: formatTimestamp(1692267600000),
-        tournament: 'VCT AMERICAS 2024 - Stage 2',
-        player1: 'FURIA Esports',
-        player2: 'Leviatán',
-        gameIcon: <IconBrandValorant color='#F2F0E9'/>,
-    }
+function Match({ match }) {
 
     return (
         <Center>
@@ -46,15 +37,15 @@ function Match() {
             >
                 <Group justify='space-between'>
                     <Text c='furiagray.0' fz={{base:'14px', sm: '16px'}}>
-                        {mockMatch.date}
+                        {formatTimestamp(match.date)}
                     </Text>
-                    {mockMatch.gameIcon}
+                    {match.gameIcon}
                 </Group>
                 <Text fw={700} fz={{base:'16px', sm: '20px'}}>
-                    {mockMatch.tournament}
+                    {match.tournament}
                 </Text>
                 <Text fz={{base:'14px', sm: '18px'}}>
-                    {mockMatch.player1} X {mockMatch.player2}
+                    {match.player1} X {match.player2}
                 </Text>
             </Card>
         </Center>
