@@ -10,8 +10,8 @@ function TeamCard({ team }) {
     return (
         <Card 
             withBorder
-            w={{ base:'35vw', xs: '30vw', md: '25vw' }}
-            h={{ base:'23vw', xs: '20vw', md: '15vw' }}
+            w={{ base:'50vw', xs: '30vw', md: '25vw' }}
+            h={{ base:'30vw', xs: '20vw', md: '15vw' }}
             style={{ 
                 display: 'flex',
                 alignItems: 'center',

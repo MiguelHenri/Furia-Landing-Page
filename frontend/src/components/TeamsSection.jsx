@@ -5,7 +5,7 @@ import TeamCard from "./TeamCard";
 
 function TeamsSection() {
 
-    const isMobile = useMediaQuery('(max-width: 768px)');
+    const isMobile = useMediaQuery('(max-width: 540px)');
 
     // must get the 'top' 3 teams
     // should provide ALT
@@ -32,7 +32,7 @@ function TeamsSection() {
             <Button
                 size={isMobile ? 'sm' : 'lg'}
             >
-                {isMobile ? 'TODOS' : 'TODOS TIMES'}
+                TODOS TIMES
                 <IconArrowRight/>
             </Button>
         </div>
@@ -44,7 +44,7 @@ function TeamsSection() {
             Times
         </Title>
         <Center>
-            <SimpleGrid cols={2}>
+            <SimpleGrid cols={{base: 1, xs: 2}}>
                 {teams}
                 {teamButton}
             </SimpleGrid>
