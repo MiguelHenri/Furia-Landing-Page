@@ -1,6 +1,6 @@
 import { Group, Stack, Text, Title, Anchor, Image, Divider } from "@mantine/core";
-import { IconBrandInstagram, IconBrandFacebook, IconBrandTwitter,
-    IconBrandYoutube, IconBrandTwitch} from '@tabler/icons-react';
+import { IconBrandInstagram, IconBrandFacebook, IconBrandYoutube, 
+    IconBrandTwitch, IconBrandX} from '@tabler/icons-react';
 
 function Footer() {
 
@@ -8,8 +8,8 @@ function Footer() {
         { link: 'https://furia.gg/', label: 'Loja'},
         { link: '', label: 'Times'},
         { link: '', label: 'Agenda'},
-        { link: '', label: 'Parceiros'},
-        { link: '', label: 'Contato'},
+        { link: 'https://furia.gg/', label: 'Parceiros'},
+        { link: 'https://furia.gg/contact-us/', label: 'Contato'},
     ];
 
     const linkButtons = linkData.map((l, index) => (
@@ -20,11 +20,11 @@ function Footer() {
 
     const socialData = [
         {icon: <Image src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png' h={50}/>, link: ''},
-        {icon: <IconBrandInstagram stroke={2} width={30} height={30}/>, link: ''},
-        {icon: <IconBrandTwitter stroke={2} width={30} height={30}/>, link: ''},
-        {icon: <IconBrandFacebook stroke={2} width={30} height={30}/>, link: ''},
-        {icon: <IconBrandYoutube stroke={2} width={30} height={30}/>, link: ''},
-        {icon: <IconBrandTwitch stroke={2} width={30} height={30}/>, link: ''},
+        {icon: <IconBrandInstagram stroke={2} width={30} height={30}/>, link: 'https://www.instagram.com/furiagg/'},
+        {icon: <IconBrandX stroke={2} width={30} height={30}/>, link: 'https://x.com/FURIA'},
+        {icon: <IconBrandFacebook stroke={2} width={30} height={30}/>, link: 'https://www.facebook.com/furiagg/'},
+        {icon: <IconBrandYoutube stroke={2} width={30} height={30}/>, link: 'https://www.youtube.com/channel/UCE4elIT7DqDv545IA71feHg'},
+        {icon: <IconBrandTwitch stroke={2} width={30} height={30}/>, link: 'https://www.twitch.tv/team/furia'},
     ];
 
     const socialButtons = socialData.map((l, index) => (
