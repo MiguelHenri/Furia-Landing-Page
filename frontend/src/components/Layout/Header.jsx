@@ -1,10 +1,13 @@
 import { useDisclosure } from "@mantine/hooks";
-import { Anchor, Burger, Divider, Group, Image } from "@mantine/core";
+import { Anchor, Burger, Collapse, Divider, Group, Image, Stack } from "@mantine/core";
 import { IconShoppingBag } from '@tabler/icons-react';
 
 function Header() {
 
-    const [opened, {toggle}] = useDisclosure();
+    const [opened, { toggle }] = useDisclosure(false, {
+        onOpen: () => (document.body.style.overflow = 'hidden'),
+        onClose: () => (document.body.style.overflow = ''),
+    });
 
     const data = [
         { link: '', label: 'Loja'},
@@ -13,6 +16,12 @@ function Header() {
         { link: '', label: 'Parceiros'},
         { link: '', label: 'Contato'},
     ];
+
+    const menuLinks = data.map((l, index) => (
+        <Anchor key={index} href={l.link} size='lg'>
+            {l.label}
+        </Anchor>
+    ))
 
     return (
         <>
@@ -29,6 +38,39 @@ function Header() {
             </Anchor>
         </Group>
 
+        {opened && (
+        <div 
+            onClick={toggle}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                zIndex: 998,
+            }}
+        />
+        )}
+
+        <Collapse 
+            in={opened}
+            style={{ 
+                position: 'fixed',
+                width: '300px',
+                zIndex: 999,
+            }}
+            >
+            <Stack 
+                w='300px'
+                h='100vh'
+                bg='primary.0'
+                p='20px'
+            >
+                <Burger opened={opened} onClick={toggle} size="md"/>
+                {menuLinks}
+            </Stack>
+        </Collapse>
         <Divider mt='10px'/>
         </>
     )
