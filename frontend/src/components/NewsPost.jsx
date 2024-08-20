@@ -2,17 +2,9 @@ import { Card, Image, Stack, Title, Text, Center, Button } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
 import { useMediaQuery } from "@mantine/hooks";
 
-// needs to receive a post object.
-function NewsPost() {
+function NewsPost({ post }) {
 
     const isMobile = useMediaQuery('(max-width: 768px)');
-
-    const mockPost = {
-        title: 'CHAMPION + FURIA',
-        text: 'A Champion, icônica marca de sportswear, se une com a FURIA, uma das maiores organizações de esports do mundo, para uma coleção especial e limitada de camisetas e moletons, mixando gráficos e temas de ambas as marcas em uma verdadeira campanha colaborativa. ',
-        image: 'https://furia.gg/wp-content/uploads/2024/08/Banner-Furia-Desk-scaled-2048x911.webp',
-        alt: 'A imagem mostra três pessoas vestindo roupas de um collab das marcas "Champion" e "FURIA", posando contra um fundo azul.',
-    }
 
     return (
         <Center>
@@ -23,8 +15,8 @@ function NewsPost() {
             >
                 <Card.Section style={{ position: 'relative' }}>
                     <Image
-                        src={mockPost.image}
-                        alt={mockPost.alt}
+                        src={post.image}
+                        alt={post.alt}
                         h={{base:'45vh', sm:'70vh'}}
                     />
                     <Button 
@@ -41,11 +33,11 @@ function NewsPost() {
                 </Card.Section>
                 <Card.Section>
                     <Stack p='xs'>
-                        <Title c='primary.0' order={isMobile? 2 : 1}> 
-                            {mockPost.title}
+                        <Title c='primary.0' order={isMobile? 2 : 1} lineClamp={1}> 
+                            {post.title}
                         </Title>
                         <Text truncate='end' c='primary.0'> 
-                            {mockPost.text}
+                            {post.text}
                         </Text>
                     </Stack>
                 </Card.Section>
