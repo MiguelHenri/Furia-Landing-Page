@@ -1,6 +1,7 @@
 import { useDisclosure } from "@mantine/hooks";
 import { Anchor, Burger, Collapse, Divider, Group, Image, Stack } from "@mantine/core";
-import { IconShoppingBag } from '@tabler/icons-react';
+import { IconAddressBook, IconCalendarMonth, IconHeartHandshake,
+    IconShoppingBag, IconUsersGroup } from '@tabler/icons-react';
 
 function Header() {
 
@@ -10,16 +11,19 @@ function Header() {
     });
 
     const data = [
-        { link: '', label: 'Loja'},
-        { link: '', label: 'Times'},
-        { link: '', label: 'Agenda'},
-        { link: '', label: 'Parceiros'},
-        { link: '', label: 'Contato'},
+        { link: '', label: 'Loja', icon: <IconShoppingBag/>},
+        { link: '', label: 'Times', icon: <IconUsersGroup/>},
+        { link: '', label: 'Agenda', icon: <IconCalendarMonth/>},
+        { link: '', label: 'Parceiros', icon: <IconHeartHandshake/>},
+        { link: '', label: 'Contato', icon: <IconAddressBook/>},
     ];
 
     const menuLinks = data.map((l, index) => (
         <Anchor key={index} href={l.link} size='lg'>
-            {l.label}
+            <Group>
+                {l.icon}
+                {l.label}
+            </Group>
         </Anchor>
     ))
 
@@ -39,7 +43,7 @@ function Header() {
         </Group>
 
         {opened && (
-        <div 
+        <div // Shadow overlay
             onClick={toggle}
             style={{
                 position: 'fixed',
@@ -53,7 +57,7 @@ function Header() {
         />
         )}
 
-        <Collapse 
+        <Collapse // Collapsed sidebar
             in={opened}
             style={{ 
                 position: 'fixed',

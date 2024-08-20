@@ -1,6 +1,5 @@
 import { Card, Center, Group, Text } from "@mantine/core";
 import { IconBrandValorant } from '@tabler/icons-react';
-import { useMediaQuery } from "@mantine/hooks";
 
 const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
