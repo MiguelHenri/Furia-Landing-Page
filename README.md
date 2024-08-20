@@ -28,6 +28,22 @@ Then, start the frontend server by running:
 $ npm run dev
 ```
 
+## Postgres
+
+Make sure you have PostgreSQL installed:
+```bash
+$ sudo apt install postgresql postgresql-contrib
+$ sudo service postgresql start
+```
+
+Create and populate the table:
+```bash
+$ sudo -i -u <username>
+$ psql -U <username> -d <database_name> -a -f /<path>/sql/create_table.sql
+$ psql -U <username> -d <database_name> -a -f /<path>/sql/populate.sql
+```
+- Check this [link](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart) for help, if needed.
+
 ## Backend
 
 In the `/backend` directory, create a Python environment:

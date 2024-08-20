@@ -1,4 +1,12 @@
 from database import db
+from enum import Enum as PyEnum
+
+# possible icons
+class MatchIcon(PyEnum):
+    VALORANT = 'VALORANT'
+    LOL = 'LOL'
+    CS = 'CS'
+    R6 = 'R6'
 
 class Match(db.Model):
     __tablename__ = 'matches' # postgres table name
@@ -7,7 +15,7 @@ class Match(db.Model):
     player1 = db.Column(db.String(50), nullable=False)
     player2 = db.Column(db.String(50), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    # todo icon
+    icon = db.Column(db.Enum(MatchIcon))
 
     def to_dict(self):
         return {
@@ -15,5 +23,6 @@ class Match(db.Model):
             'tournament': self.tournament,
             'player1': self.player1,
             'player2': self.player2,
-            'date': self.date.isoformat()
+            'date': self.date.isoformat(),
+            'icon': self.icon
         }
