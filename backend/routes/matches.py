@@ -1,13 +1,14 @@
 from flask import Blueprint, jsonify, request
 from models.Match import Match
 from database import db
+from flask_jwt_extended import jwt_required
 
 matches_bp = Blueprint('Match', __name__)
 
 @matches_bp.route('/api/matches', methods=['GET'])
 def get_matches():
     # Getting all matches
-    matches = Match.query.order_by(Match.date.desc()).all()
+    matches = Match.query.order_by(Match.date.asc()).all()
 
     # Validate
     if not matches:
@@ -17,6 +18,7 @@ def get_matches():
     return jsonify(results), 200
 
 @matches_bp.route('/api/matches', methods=['POST'])
+@jwt_required()
 def add_match():
     data = request.get_json()
 
@@ -28,7 +30,7 @@ def add_match():
         tournament=data['tournament'],
         player1=data['player1'],
         player2=data['player2'],
-        date=data['date'], # needs to be ISO
+        date=data['date'],
         icon=data['icon']
     )
 

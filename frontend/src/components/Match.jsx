@@ -1,5 +1,4 @@
 import { Card, Center, Group, Text } from "@mantine/core";
-import { IconBrandValorant } from '@tabler/icons-react';
 
 const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
@@ -24,6 +23,8 @@ const formatTimestamp = (timestamp) => {
 };
 
 function Match({ match }) {
+
+    // todo check icon
 
     return (
         <Center>

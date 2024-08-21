@@ -7,6 +7,7 @@ class NewsPost(db.Model):
     text = db.Column(db.String(300), nullable=False)
     link = db.Column(db.String(300), nullable=False)
     image_path = db.Column(db.String(100), nullable=False)
+    alt = db.Column(db.String(300))
 
     def to_dict(self):
         return {
@@ -14,5 +15,6 @@ class NewsPost(db.Model):
             'title': self.title,
             'text': self.text,
             'link': self.link,
-            'image_path': self.image_path
+            'image_path': self.image_path,
+            'alt': self.alt
         }

@@ -1,24 +1,32 @@
-import { Title, Button, Center, SimpleGrid, Anchor } from "@mantine/core";
+import { Title, Button, Center, SimpleGrid } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconArrowRight } from '@tabler/icons-react';
 import TeamCard from "./TeamCard";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function TeamsSection() {
+    const [teams, setTeams] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const isMobile = useMediaQuery('(max-width: 540px)');
 
-    // must get the 'top' 3 teams
-    // should provide ALT
-    const data = [
-        {link: '', name: 'LOL', image: 'https://noticias.maisesports.com.br/wp-content/uploads/2024/01/FURIA-2024-800x533.jpeg'},
-        {link: '', name: 'VALORANT', image: 'https://www.esports.net/br/wp-content/uploads/sites/3/2024/06/furia-vct-americas-1024x683.webp'},
-        {link: '', name: 'CS', image: 'https://static.draft5.gg/news/2024/07/16140915/FURIA-Esports-World-Cup-2024.jpeg'},
-    ]
+    // Fetching matches
+    useEffect(() => {
+        setLoading(true);
+        axios.get('/api/teams')
+            .then(res => {
+                setTeams(res.data);
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.error('Unhandled error when fetching teams.', err);
+            })
+            .finally(() => setLoading(false));
+    }, [])
 
-    const teams = data.map((l, index) => (
-        <Anchor key={index} href={l.link}>
-            <TeamCard team={l}/>
-        </Anchor>
+    const teamsData = teams.map((l, index) => (
+        <TeamCard team={l} key={index}/>
     ));
 
     const teamButton = (
@@ -45,7 +53,7 @@ function TeamsSection() {
         </Title>
         <Center>
             <SimpleGrid cols={{base: 1, xs: 2}}>
-                {teams}
+                {teamsData}
                 {teamButton}
             </SimpleGrid>
         </Center>

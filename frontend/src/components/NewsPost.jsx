@@ -15,7 +15,7 @@ function NewsPost({ post }) {
             >
                 <Card.Section style={{ position: 'relative' }}>
                     <Image
-                        src={post.image}
+                        src={post.image_path}
                         alt={post.alt}
                         h={{base:'45vh', sm:'70vh'}}
                     />
@@ -26,6 +26,8 @@ function NewsPost({ post }) {
                             right: '20px',
                         }}
                         size={isMobile ? 'sm' : 'lg'}
+                        component="a"
+                        href={post.link}
                     >
                         LEIA MAIS&nbsp;
                         <IconArrowRight/>

@@ -5,8 +5,6 @@ function TeamCard({ team }) {
 
     const { hovered, ref } = useHover();
 
-    const { image, name } = team;
-
     return (
         <Card 
             withBorder
@@ -19,10 +17,12 @@ function TeamCard({ team }) {
                 backgroundColor: '#403F3D'
             }}
             ref={ref}
+            component='a'
+            href={team.link}
         >
             <Card.Section>
                 <Image 
-                    src={image}
+                    src={team.image_path}
                     fit='cover'
                 />
                 {hovered && (
@@ -38,7 +38,7 @@ function TeamCard({ team }) {
                         }}
                     >
                         <Title order={2}>
-                            {name}
+                            {team.title}
                         </Title>
                     </Overlay>
                 )}

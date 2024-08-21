@@ -1,13 +1,14 @@
 from flask import Blueprint, jsonify, request
 from models.StoreItem import StoreItem
 from database import db
+from flask_jwt_extended import jwt_required
 
 store_bp = Blueprint('StoreItem', __name__)
 
 MAX_ITEMS = 2
 
 @store_bp.route('/api/store', methods=['GET'])
-def get_matches():
+def get_store():
     # Getting all items posts
     items = StoreItem.query.all()
 
@@ -19,7 +20,8 @@ def get_matches():
     return jsonify(results), 200
 
 @store_bp.route('/api/store', methods=['POST'])
-def add_news():
+@jwt_required()
+def add_store_item():
     data = request.get_json()
 
     # Validate
@@ -28,10 +30,10 @@ def add_news():
     # Checking quantity
     current_count = StoreItem.query.count()
     if current_count >= MAX_ITEMS:
-        oldest_news = StoreItem.query.order_by(StoreItem.id.asc()).first()
-        if oldest_news:
+        oldest_item = StoreItem.query.order_by(StoreItem.id.asc()).first()
+        if oldest_item:
             try:
-                db.session.delete(oldest_news)
+                db.session.delete(oldest_item)
                 db.session.commit()
             except Exception as e:
                 db.session.rollback()

@@ -24,5 +24,5 @@ class Match(db.Model):
             'player1': self.player1,
             'player2': self.player2,
             'date': self.date.isoformat(),
-            'icon': self.icon
+            'icon': self.icon.value
         }

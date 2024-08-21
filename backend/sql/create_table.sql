@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS items;
 DROP TABLE IF EXISTS news;
 DROP TABLE IF EXISTS matches;
 DROP TABLE IF EXISTS admins;
+DROP TABLE IF EXISTS teams;
 DROP TYPE IF EXISTS match_icon;
 
 CREATE TYPE match_icon AS ENUM (
@@ -31,7 +32,8 @@ CREATE TABLE news (
     title VARCHAR(50) NOT NULL,
     text VARCHAR(300) NOT NULL,
     link VARCHAR(300) NOT NULL,
-    image_path VARCHAR(100) NOT NULL
+    image_path VARCHAR(100) NOT NULL,
+    alt VARCHAR(300)
 );
 
 CREATE TABLE items (
@@ -39,5 +41,14 @@ CREATE TABLE items (
     title VARCHAR(50) NOT NULL,
     price VARCHAR(10) NOT NULL,
     link VARCHAR(300) NOT NULL,
-    image_path VARCHAR(100) NOT NULL
+    image_path VARCHAR(100) NOT NULL,
+    alt VARCHAR(300)
+);
+
+CREATE TABLE teams (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    link VARCHAR(300) NOT NULL,
+    image_path VARCHAR(100) NOT NULL,
+    alt VARCHAR(300)
 );

@@ -1,13 +1,14 @@
 from flask import Blueprint, request, jsonify
 from models.NewsPost import NewsPost
 from database import db
+from flask_jwt_extended import jwt_required
 
 news_bp = Blueprint('NewsPost', __name__)
 
 MAX_NEWS = 3
 
 @news_bp.route('/api/news', methods=['GET'])
-def get_matches():
+def get_news():
     # Getting all news posts
     news = NewsPost.query.all()
 
@@ -19,6 +20,7 @@ def get_matches():
     return jsonify(results), 200
 
 @news_bp.route('/api/news', methods=['POST'])
+@jwt_required()
 def add_news():
     data = request.get_json()
 

@@ -25,12 +25,13 @@ VALUES (
     'VALORANT'
 );
 
-INSERT INTO news (title, text, link, image_path)
+INSERT INTO news (title, text, link, image_path, alt)
 VALUES (
     'CHAMPION + FURIA',
     'A Champion, icônica marca de sportswear, se une com a FURIA, uma das maiores organizações de esports do mundo, para uma coleção especial e limitada de camisetas e moletons, mixando gráficos e temas de ambas as marcas em uma verdadeira campanha colaborativa. ',
     'https://www.mktesportivo.com/2024/07/champion-e-furia-apresentam-primeira-colecao-colaborativa/',
-    ''
+    '',
+    'A imagem mostra três pessoas vestindo roupas de um collab das marcas "Champion" e "FURIA", posando contra um fundo azul.'
 );
 
 INSERT INTO news (title, text, link, image_path)
@@ -62,5 +63,26 @@ VALUES (
     'HELLMAN''S E FURIA',
     'A Hellmann''s anunciou que é a nova parceria da Furia, uma das principais organizações de eSports global. Com o acordo, as marcas irão criar conteúdos e unir forças para participar de competições e promover ações proprietárias.',
     'https://propmark.com.br/hellmanns-e-a-nova-parceira-da-furia/',
+    ''
+);
+
+INSERT INTO teams (title, link, image_path)
+VALUES (
+    'VALORANT',
+    '/valorant',
+    ''
+);
+
+INSERT INTO teams (title, link, image_path)
+VALUES (
+    'CS',
+    '/cs',
+    ''
+);
+
+INSERT INTO teams (title, link, image_path)
+VALUES (
+    'LOL',
+    '/lol',
     ''
 );
