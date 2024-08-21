@@ -6,7 +6,7 @@ from models.Admin import Admin
 admins_bp = Blueprint('Admin', __name__)
 
 # Log in route
-@admins_bp.route('/api/admin/login', methods=['POST'])
+@admins_bp.route('/api/admins/login', methods=['POST'])
 def login():
     data = request.json
     username = data.get('username')

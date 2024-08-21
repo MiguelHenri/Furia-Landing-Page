@@ -1,6 +1,8 @@
 import { Group, Stack, Text, Title, Anchor, Image, Divider } from "@mantine/core";
+import { modals } from "@mantine/modals";
 import { IconBrandInstagram, IconBrandFacebook, IconBrandYoutube, 
     IconBrandTwitch, IconBrandX} from '@tabler/icons-react';
+import LoginModal from "../Admin/LoginModal";
 
 function Footer() {
 
@@ -17,6 +19,19 @@ function Footer() {
             {l.label}
         </Anchor>
     ));
+
+    // Adding Admin
+    linkButtons.push(
+        <Anchor key={6} component="button" onClick={() => {
+            modals.open({
+                title: 'Login',
+                c: 'primary.0',
+                children: <LoginModal />
+            })
+        }}>
+            Administração
+        </Anchor>
+    )
 
     const socialData = [
         {icon: <Image src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png' h={50}/>, link: ''},

@@ -7,12 +7,18 @@ import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import theme from './theme.js';
 import './global.css';
+import { AuthProvider } from './contexts/AuthContext.jsx';
+import { ModalsProvider } from "@mantine/modals";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <MantineProvider theme={theme}>
-        <App/>
+        <AuthProvider>
+          <ModalsProvider>
+            <App/>
+          </ModalsProvider>
+        </AuthProvider>
       </MantineProvider>
     </BrowserRouter>
   </StrictMode>,

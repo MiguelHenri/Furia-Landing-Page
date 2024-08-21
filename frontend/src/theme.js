@@ -51,6 +51,20 @@ const theme = createTheme({
                 radius: 'xl',
             }
         },
+        PasswordInput: {
+            styles: (theme) => ({
+                input: {
+                    backgroundColor: theme.colors.furiagray[2],
+                    color: theme.colors.secondary[0],
+                    borderColor: theme.colors.primary[0],
+                },
+            }),
+            defaultProps: {
+                size: 'md',
+                w: {base: '90vw', sm: '80vw', md: '80vw', lg:'70vw'},
+                radius: 'xl',
+            }
+        },
         Checkbox: {
             defaultProps: {
                 color: 'furiagray.0',

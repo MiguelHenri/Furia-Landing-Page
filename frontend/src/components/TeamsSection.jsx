@@ -17,7 +17,6 @@ function TeamsSection() {
         axios.get('/api/teams')
             .then(res => {
                 setTeams(res.data);
-                console.log(res.data);
             })
             .catch(err => {
                 console.error('Unhandled error when fetching teams.', err);
