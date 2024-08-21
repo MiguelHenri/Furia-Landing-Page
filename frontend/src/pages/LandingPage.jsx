@@ -11,7 +11,7 @@ function LandingPage() {
             <Center mt='10px'>
                 <NewsCarousel/>
             </Center>
-
+            
             <StoreSection/>
 
             <Title ml='2vw' mt='50px'>

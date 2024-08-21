@@ -46,24 +46,29 @@ function EditNewsModal({ news }) {
     }
 
     return (
-        <Stack component='form' onSubmit={form.onSubmit(onSubmit)}>
+        <Stack component='form' onSubmit={form.onSubmit(onSubmit)} align='center'>
             <TextInput
+                w='260px'
                 placeholder='Título'
                 {...form.getInputProps('title')}
             />
             <TextInput
+                w='260px'
                 placeholder='Texto descritivo'
                 {...form.getInputProps('text')}
             />
             <TextInput
+                w='260px'
                 placeholder='Link da notícia'
                 {...form.getInputProps('link')}
             />
             <TextInput
+                w='260px'
                 placeholder='Imagem'
                 {...form.getInputProps('image_path')}
             />
             <TextInput
+                w='260px'
                 placeholder='Texto Alternativo'
                 {...form.getInputProps('alt')}
             />
