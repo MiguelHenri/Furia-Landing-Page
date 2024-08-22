@@ -3,6 +3,10 @@ from flask import Blueprint, request, jsonify
 from models.NewsPost import NewsPost
 from database import db
 from flask_jwt_extended import jwt_required
+from werkzeug.utils import secure_filename
+from config import Config
+from uuid import uuid4
+from .images import ImageUtils
 
 news_bp = Blueprint('NewsPost', __name__)
 
@@ -27,25 +31,33 @@ def get_news_from_id(id):
 @news_bp.route('/api/news/<int:id>', methods=['PUT'])
 @jwt_required()
 def update_news_from_id(id):
-    data = request.get_json()
-
-    # Validate
-    required_fields = ['title', 'text', 'link', 'image_path']
-    if not all(field in data for field in required_fields):
-        return jsonify({'message': 'Missing required fields'}), 400
-    
-    image_path = data['image_path']
-    if not os.path.isfile(image_path):
-        return jsonify({'message': 'Invalid image_path. File does not exist.'}), 400
-    
     # Getting news from id
     new = NewsPost.query.get_or_404(id)
-    
-    new.title = data['title']
-    new.text = data['text']
-    new.link = data['link']
-    new.image_path = data['image_path']
-    new.alt = data.get('alt', '')
+
+    # Updating fields
+    new.title = request.form.get('title', new.title)
+    new.text = request.form.get('text', new.text)
+    new.link = request.form.get('link', new.link)
+    new.alt = request.form.get('alt', new.alt)
+
+    if 'image' in request.files:
+        image_file = request.files['image']
+
+        # Deleting old image
+        if new.image_path:
+            old_image_path = os.path.join(Config.UPLOAD_FOLDER, secure_filename(new.image_path))
+            if os.path.exists(old_image_path):
+                os.remove(old_image_path)
+
+        # Saving image
+        if image_file and ImageUtils.allowed_file(image_file.filename):
+            filename = secure_filename(image_file.filename)
+            unique_filename = f"{uuid4()}_{filename}"
+            image_path = os.path.join(Config.UPLOAD_FOLDER, unique_filename)
+            image_file.save(image_path)
+
+        # Updating path
+        new.image_path = filename
 
     try:
         db.session.commit()

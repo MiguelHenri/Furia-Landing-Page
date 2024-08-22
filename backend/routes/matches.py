@@ -8,6 +8,7 @@ matches_bp = Blueprint('Match', __name__)
 @matches_bp.route('/api/matches', methods=['GET'])
 def get_matches():
     # Getting all matches
+    # todo filter
     matches = Match.query.order_by(Match.date.asc()).all()
 
     # Validate

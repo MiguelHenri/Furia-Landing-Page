@@ -55,7 +55,8 @@ function EditNewsModal() {
 
     function onSubmit(values) {
         setButtonLoading(true);
-        axios.put(`/api/news/${newsNumber}`, values, {
+        values.image = file;
+        axios.putForm(`/api/news/${newsNumber}`, values, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
