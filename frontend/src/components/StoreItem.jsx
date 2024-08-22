@@ -1,14 +1,15 @@
-import { Image, Stack, Text } from "@mantine/core";
+import { Image, Stack, Text, Anchor } from "@mantine/core";
 
-// this should receive an item object
 function StoreItem({ item }) {
 
     return (
         <Stack w={{base: '40vw', sm: '30vw', md: '25vw', lg: '20vw'}}>
-            <Image
-                src={item.image}
-                alt={item.alt}
-            />
+            <Anchor href={item.link}>
+                <Image
+                    src={item.image_path}
+                    alt={item.alt}
+                />
+            </Anchor>
             <Text fw={700}>
                 {item.title}
             </Text>

@@ -1,4 +1,5 @@
 import { Card, Center, Group, Text } from "@mantine/core";
+import { IconBrandValorant } from '@tabler/icons-react';
 
 const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
@@ -22,9 +23,17 @@ const formatTimestamp = (timestamp) => {
     return `${formattedDate} - ${formattedTime}h`;
 };
 
-function Match({ match }) {
+const formatIcon = (icon) => {
+    switch(icon) {
+        // todo check other cases
+        case 'VALORANT':
+            return <IconBrandValorant color='white'/>;
+        default:
+            return null;
+    }
+};
 
-    // todo check icon
+function Match({ match }) {
 
     return (
         <Center>
@@ -40,7 +49,7 @@ function Match({ match }) {
                     <Text c='furiagray.0' fz={{base:'14px', sm: '16px'}}>
                         {formatTimestamp(match.date)}
                     </Text>
-                    {match.gameIcon}
+                    {formatIcon(match.icon)}
                 </Group>
                 <Text fw={700} fz={{base:'16px', sm: '20px'}}>
                     {match.tournament}

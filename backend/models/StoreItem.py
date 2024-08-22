@@ -1,4 +1,6 @@
 from database import db
+from flask import url_for
+from config import Config
 
 class StoreItem(db.Model):
     __tablename__ = 'items' # postgres table name
@@ -15,6 +17,6 @@ class StoreItem(db.Model):
             'title': self.title,
             'price': self.price,
             'link': self.link,
-            'image_path': self.image_path,
+            'image_path': Config.FLASK_HOST + url_for('Image.serve_file', filename=self.image_path),
             'alt': self.alt
         }

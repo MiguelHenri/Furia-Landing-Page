@@ -1,4 +1,6 @@
 from database import db
+from flask import url_for
+from config import Config
 
 class Team(db.Model):
     __tablename__ = 'teams' # postgres table name
@@ -13,6 +15,6 @@ class Team(db.Model):
             'id': self.id,
             'title': self.title,
             'link': self.link,
-            'image_path': self.image_path,
+            'image_path': Config.FLASK_HOST + url_for('Image.serve_file', filename=self.image_path),
             'alt': self.alt
         }

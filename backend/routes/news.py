@@ -1,3 +1,4 @@
+import os
 from flask import Blueprint, request, jsonify
 from models.NewsPost import NewsPost
 from database import db
@@ -31,7 +32,11 @@ def update_news_from_id(id):
     # Validate
     required_fields = ['title', 'text', 'link', 'image_path']
     if not all(field in data for field in required_fields):
-        return jsonify({'error': 'Missing required fields'}), 400
+        return jsonify({'message': 'Missing required fields'}), 400
+    
+    image_path = data['image_path']
+    if not os.path.isfile(image_path):
+        return jsonify({'message': 'Invalid image_path. File does not exist.'}), 400
     
     # Getting news from id
     new = NewsPost.query.get_or_404(id)
