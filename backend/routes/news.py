@@ -5,12 +5,10 @@ from flask_jwt_extended import jwt_required
 
 news_bp = Blueprint('NewsPost', __name__)
 
-MAX_NEWS = 3
-
 @news_bp.route('/api/news', methods=['GET'])
 def get_news():
     # Getting all news posts
-    news = NewsPost.query.all()
+    news = NewsPost.query.order_by(NewsPost.id.asc()).all()
 
     # Validate
     if not news:
@@ -19,43 +17,37 @@ def get_news():
     results = [new.to_dict() for new in news]
     return jsonify(results), 200
 
-@news_bp.route('/api/news', methods=['POST'])
+@news_bp.route('/api/news/<int:id>', methods=['GET'])
+def get_news_from_id(id):
+    # Getting news from id
+    new = NewsPost.query.get_or_404(id)
+    return jsonify(new.to_dict()), 200
+
+@news_bp.route('/api/news/<int:id>', methods=['PUT'])
 @jwt_required()
-def add_news():
+def update_news_from_id(id):
     data = request.get_json()
 
     # Validate
-    if not all(key in data for key in ('title', 'text', 'link', 'image_path')):
+    required_fields = ['title', 'text', 'link', 'image_path']
+    if not all(field in data for field in required_fields):
         return jsonify({'error': 'Missing required fields'}), 400
-    # Checking quantity
-    current_count = NewsPost.query.count()
-    if current_count >= MAX_NEWS:
-        oldest_news = NewsPost.query.order_by(NewsPost.id.asc()).first()
-        if oldest_news:
-            try:
-                db.session.delete(oldest_news)
-                db.session.commit()
-            except Exception as e:
-                db.session.rollback()
-                return jsonify({
-                    'message': 'Unhandled error when removing old news.',
-                    'error': str(e)
-                }), 500
+    
+    # Getting news from id
+    new = NewsPost.query.get_or_404(id)
+    
+    new.title = data['title']
+    new.text = data['text']
+    new.link = data['link']
+    new.image_path = data['image_path']
+    new.alt = data.get('alt', '')
 
-    new_news = NewsPost(
-        title=data['title'],
-        text=data['text'],
-        link=data['link'],
-        image_path=data['image_path']
-    )
-
-    try: 
-        db.session.add(new_news)
+    try:
         db.session.commit()
-        return jsonify(new_news.to_dict()), 201
+        return jsonify(new.to_dict()), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({
-            'message': 'Unhandled error when adding news.',
+            'message': 'Unhandled error when editing news.',
             'error': str(e)
         }), 500

@@ -1,12 +1,14 @@
 import { useForm, isNotEmpty } from "@mantine/form"
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/useAuth";
 import { modals } from "@mantine/modals";
-import { Button, Stack, TextInput } from "@mantine/core";
+import { Button, Stack, TextInput, Text, SegmentedControl, LoadingOverlay } from "@mantine/core";
 
-function EditNewsModal({ news }) {
+function EditNewsModal() {
     const [loading, setLoading] = useState(false);
+    const [buttonLoading, setButtonLoading] = useState(false);
+    const [newsNumber, setNewsNumber] = useState(1);
 
     const { token } = useAuth();
 
@@ -29,9 +31,27 @@ function EditNewsModal({ news }) {
         }
     })
 
-    function onSubmit(values) {
+    useEffect(() => {
         setLoading(true);
-        axios.post('/api/news', values, {
+        axios.get(`/api/news/${newsNumber}`)
+            .then(res => {
+                form.setValues({
+                    title: res.data.title || '',
+                    text: res.data.text || '',
+                    link: res.data.link || '',
+                    image_path: res.data.image_path || '',
+                    alt: res.data.alt || '',
+                });
+            })
+            .catch(err => {
+                console.error('Unhandled error getting new from id.', err);
+            })
+            .finally(() => setLoading(false));
+    }, [newsNumber]);
+
+    function onSubmit(values) {
+        setButtonLoading(true);
+        axios.put(`/api/news/${newsNumber}`, values, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -42,38 +62,59 @@ function EditNewsModal({ news }) {
         .catch(err => {
             console.error('Unhandled error when editing news.', err);
         })
-        .finally(() => setLoading(false));
+        .finally(() => setButtonLoading(false));
     }
 
     return (
         <Stack component='form' onSubmit={form.onSubmit(onSubmit)} align='center'>
+            <LoadingOverlay visible={loading}/>
+            <Text c='primary.0'>
+                Qual notícia você deseja atualizar?
+            </Text>
+            <SegmentedControl
+                data={[
+                    { label: '1', value: '1' },
+                    { label: '2', value: '2' },
+                    { label: '3', value: '3' },
+                ]}
+                withItemsBorders={false}
+                w="200px"
+                color="furiagray.2"
+                value={String(newsNumber)}
+                onChange={(value) => setNewsNumber(parseInt(value, 10))}
+            />
             <TextInput
                 w='260px'
-                placeholder='Título'
+                labelProps={{ style: { fontWeight: 'normal' } }}
+                label='Título'
                 {...form.getInputProps('title')}
             />
             <TextInput
                 w='260px'
-                placeholder='Texto descritivo'
+                labelProps={{ style: { fontWeight: 'normal' } }}
+                label='Texto descritivo'
                 {...form.getInputProps('text')}
             />
             <TextInput
                 w='260px'
-                placeholder='Link da notícia'
+                labelProps={{ style: { fontWeight: 'normal' } }}
+                label='Link da notícia'
                 {...form.getInputProps('link')}
             />
             <TextInput
                 w='260px'
-                placeholder='Imagem'
+                labelProps={{ style: { fontWeight: 'normal' } }}
+                label='Imagem'
                 {...form.getInputProps('image_path')}
             />
             <TextInput
                 w='260px'
-                placeholder='Texto Alternativo'
+                labelProps={{ style: { fontWeight: 'normal' } }}
+                label='Texto Alternativo'
                 {...form.getInputProps('alt')}
             />
 
-            <Button type='submit' loading={loading}>
+            <Button type='submit' loading={buttonLoading}>
                 SALVAR
             </Button>
         </Stack>

@@ -11,12 +11,6 @@ function LoginModal() {
 
     const { saveLogin, token, clearAuth } = useAuth();
 
-    // if (token) return (
-    //     <Text ta='center' c='primary.0'>
-    //         Usuário já logado.
-    //     </Text>
-    // );
-
     const form = useForm({
         mode: 'uncontrolled',
 
@@ -44,15 +38,32 @@ function LoginModal() {
             if (err.response.data.message) {
                 setError(err.response.data.message);
             } else {
-                setError('An unknown error occurred.');
+                setError('Ocorreu um erro desconhecido.');
             }
             console.error('Unhandled error when logging in.', err);
         })
         .finally(() => setLoading(false));
     }
 
+    // Log out
+    if (token) return (
+        <Stack align='center' p='20px'>
+            <Text c='primary.0'>
+                Usuário já logado.
+            </Text>
+            <Button onClick={() => {
+                clearAuth();
+                modals.closeAll();
+            }} 
+                bg='red'
+            >
+                SAIR
+            </Button>
+        </Stack>
+    );
+
     return (
-        <Stack component='form' onSubmit={form.onSubmit(onSubmit)} align='center'>
+        <Stack component='form' onSubmit={form.onSubmit(onSubmit)} align='center' p='20px'>
             <TextInput
                 w='260px'
                 placeholder='Usuário'

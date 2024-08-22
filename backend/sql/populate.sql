@@ -42,6 +42,14 @@ VALUES (
     ''
 );
 
+INSERT INTO news (title, text, link, image_path)
+VALUES (
+    'HELLMAN''S E FURIA',
+    'A Hellmann''s anunciou que é a nova parceria da Furia, uma das principais organizações de eSports global. Com o acordo, as marcas irão criar conteúdos e unir forças para participar de competições e promover ações proprietárias.',
+    'https://propmark.com.br/hellmanns-e-a-nova-parceira-da-furia/',
+    ''
+);
+
 INSERT INTO items (title, price, link, image_path)
 VALUES (
     'CAMISETA CHAMPION X FURIA MASCOT HOODIE PRETA',
@@ -55,14 +63,6 @@ VALUES (
     'CAMISETA CHAMPION X FURIA COLLEGE PRETA',
     'R$179,99',
     'https://furia.gg/product/camiseta-champion-x-furia-college-preta/?attribute_tamanho=P&gad_source=1&gclid=CjwKCAjw_ZC2BhAQEiwAXSgClvbKUV8o9gNLBjH7PTL93keCrptdxE27yrh1yox9LMTY-I170OnubRoCS4cQAvD_BwE',
-    ''
-);
-
-INSERT INTO news (title, text, link, image_path)
-VALUES (
-    'HELLMAN''S E FURIA',
-    'A Hellmann''s anunciou que é a nova parceria da Furia, uma das principais organizações de eSports global. Com o acordo, as marcas irão criar conteúdos e unir forças para participar de competições e promover ações proprietárias.',
-    'https://propmark.com.br/hellmanns-e-a-nova-parceira-da-furia/',
     ''
 );
 

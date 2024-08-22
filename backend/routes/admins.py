@@ -13,16 +13,16 @@ def login():
     password = data.get('password')
 
     if not username or not password:
-        return jsonify({'message': 'Username and password are required.'}), 400
+        return jsonify({'message': 'Usuário e senha são necessários.'}), 400
 
     admin = Admin.query.filter_by(username=username).first()
 
     if admin is None or not check_password_hash(admin.password_hash, password):
-        return jsonify({'message': 'Invalid username or password.'}), 401
+        return jsonify({'message': 'Usuário ou senha inválido.'}), 401
 
     token = create_access_token(identity={'username': username})
 
     return jsonify({
-        'message': 'Logged in successfully.',
+        'message': 'Entrou com sucesso.',
         'access_token': token,
     }), 200
