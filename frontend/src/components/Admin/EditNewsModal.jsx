@@ -3,12 +3,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/useAuth";
 import { modals } from "@mantine/modals";
-import { Button, Stack, TextInput, Text, SegmentedControl, LoadingOverlay } from "@mantine/core";
+import { Button, Stack, TextInput, Text, SegmentedControl, 
+    LoadingOverlay, Image, FileButton} from "@mantine/core";
 
 function EditNewsModal() {
     const [loading, setLoading] = useState(false);
     const [buttonLoading, setButtonLoading] = useState(false);
     const [newsNumber, setNewsNumber] = useState(1);
+    const [imagePath, setImagePath] = useState('');
+    const [file, setFile] = useState(null);
 
     const { token } = useAuth();
 
@@ -42,6 +45,7 @@ function EditNewsModal() {
                     image_path: res.data.image_path || '',
                     alt: res.data.alt || '',
                 });
+                setImagePath(res.data.image_path);
             })
             .catch(err => {
                 console.error('Unhandled error getting new from id.', err);
@@ -101,20 +105,22 @@ function EditNewsModal() {
                 label='Link da notícia'
                 {...form.getInputProps('link')}
             />
-            <TextInput
-                w='260px'
-                labelProps={{ style: { fontWeight: 'normal' } }}
-                label='Imagem'
-                {...form.getInputProps('image_path')}
-            />
+            {imagePath && (
+                <Image
+                    src={imagePath}
+                    w='260px'
+                />
+            )}
+            <FileButton accept="image/png,image/jpeg,image/webp" onChange={setFile}>
+                {(props) => <Button {...props}>CARREGAR IMAGEM</Button>}
+            </FileButton>
             <TextInput
                 w='260px'
                 labelProps={{ style: { fontWeight: 'normal' } }}
                 label='Texto Alternativo'
                 {...form.getInputProps('alt')}
             />
-
-            <Button type='submit' loading={buttonLoading}>
+            <Button type='submit' loading={buttonLoading} bg='blue'>
                 SALVAR
             </Button>
         </Stack>

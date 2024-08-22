@@ -23,7 +23,6 @@ function NewsCarousel() {
         setLoading(true);
         axios.get('/api/news')
             .then(res => {
-                console.log(res.data);
                 setNews(res.data);
             })
             .catch(err => {
