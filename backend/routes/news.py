@@ -46,6 +46,7 @@ def update_news_from_id(id):
         # Deleting old image
         if new.image_path:
             old_image_path = os.path.join(Config.UPLOAD_FOLDER, secure_filename(new.image_path))
+            print(old_image_path)
             if os.path.exists(old_image_path):
                 os.remove(old_image_path)
 
@@ -57,7 +58,7 @@ def update_news_from_id(id):
             image_file.save(image_path)
 
         # Updating path
-        new.image_path = filename
+        new.image_path = unique_filename
 
     try:
         db.session.commit()

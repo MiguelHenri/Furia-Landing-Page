@@ -13,6 +13,8 @@ function EditNewsModal() {
     const [imagePath, setImagePath] = useState('');
     const [file, setFile] = useState(null);
 
+    // todo show errors
+
     const { token } = useAuth();
 
     const form = useForm({
@@ -112,7 +114,14 @@ function EditNewsModal() {
                     w='260px'
                 />
             )}
-            <FileButton accept="image/png,image/jpeg,image/webp" onChange={setFile}>
+            <FileButton 
+                accept="image/png,image/jpeg,image/webp" 
+                onChange={(uploadedFile) => {
+                    setFile(uploadedFile);
+                    setImagePath(URL.createObjectURL(uploadedFile));
+                    // this may leak memory
+                }}
+            >
                 {(props) => <Button {...props}>CARREGAR IMAGEM</Button>}
             </FileButton>
             <TextInput
