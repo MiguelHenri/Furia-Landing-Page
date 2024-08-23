@@ -37,7 +37,7 @@ function TeamsSection() {
                 height: '100%' 
             }}>
             <Button
-                size={isMobile ? 'sm' : 'lg'}
+                size={isMobile ? 'md' : 'lg'}
             >
                 TODOS TIMES
                 <IconArrowRight/>

@@ -2,14 +2,17 @@ from flask import Blueprint, jsonify, request
 from models.Match import Match
 from database import db
 from flask_jwt_extended import jwt_required
+from datetime import datetime
 
 matches_bp = Blueprint('Match', __name__)
 
 @matches_bp.route('/api/matches', methods=['GET'])
 def get_matches():
-    # Getting all matches
-    # todo filter
-    matches = Match.query.order_by(Match.date.asc()).all()
+    # Getting all valid matches
+    # todo, include current matches
+    matches = Match.query.filter(
+        Match.date > datetime.now()
+    ).order_by(Match.date.asc()).all()
 
     # Validate
     if not matches:

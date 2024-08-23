@@ -4,20 +4,20 @@ import { useMediaQuery } from "@mantine/hooks";
 
 function NewsPost({ post }) {
 
-    const isMobile = useMediaQuery('(max-width: 768px)');
+    const isMobile = useMediaQuery('(max-width: 575.9px)');
 
     return (
         <Center>
             <Card 
                 radius="xl"
-                h={{base:'60vh', sm:'85vh'}}
+                h={{base:'40vh', xs: '60vh', sm:'85vh'}}
                 w={{base:'90vw', sm:'85vw'}}
             >
                 <Card.Section style={{ position: 'relative' }}>
                     <Image
                         src={post.image_path}
                         alt={post.alt}
-                        h={{base:'45vh', sm:'70vh'}}
+                        h={{base: '30vh', xs:'45vh', sm:'70vh'}}
                     />
                     <Button 
                         style={{
@@ -35,10 +35,10 @@ function NewsPost({ post }) {
                 </Card.Section>
                 <Card.Section>
                     <Stack p='xs'>
-                        <Title c='primary.0' order={isMobile? 2 : 1} lineClamp={1}> 
+                        <Title c='primary.0' order={isMobile? 3 : 2} lineClamp={1}> 
                             {post.title}
                         </Title>
-                        <Text truncate='end' c='primary.0'> 
+                        <Text truncate='end' c='primary.0' mt={isMobile ? '-15px' : '0'}> 
                             {post.text}
                         </Text>
                     </Stack>

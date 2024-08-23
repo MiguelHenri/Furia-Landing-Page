@@ -16,6 +16,7 @@ function NewsCarousel() {
 
     const { token } = useAuth();
 
+    const isSmaller = useMediaQuery('(max-width: 575.9px)');
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     // Fetching news posts
@@ -38,7 +39,10 @@ function NewsCarousel() {
         >
             <div style={{ 
                 width: isMobile? '90vw' : '85vw', 
-                height: isMobile? '65vh' : '90vh',
+                height: isMobile? 
+                    isSmaller? '45vh' : '65vh' 
+                    :
+                    '90vh',
             }}>
                 <NewsPost post={l}/>
             </div>
@@ -60,7 +64,10 @@ function NewsCarousel() {
             )}
             <div style={{ 
                 width: isMobile? '90vw' : '85vw',
-                height: isMobile? '65vh' : '90vh',
+                height: isMobile? 
+                isSmaller? '45vh' : '65vh' 
+                :
+                '90vh',
             }}>
                 <Carousel 
                     withControls={false} 

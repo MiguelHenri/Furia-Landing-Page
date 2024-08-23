@@ -12,8 +12,7 @@ function EditNewsModal() {
     const [newsNumber, setNewsNumber] = useState(1);
     const [imagePath, setImagePath] = useState('');
     const [file, setFile] = useState(null);
-
-    // todo show errors
+    const [error, setError] = useState('');
 
     const { token } = useAuth();
 
@@ -50,6 +49,7 @@ function EditNewsModal() {
                 setImagePath(res.data.image_path);
             })
             .catch(err => {
+                setError('Erro ao obter a notícia.')
                 console.error('Unhandled error getting new from id.', err);
             })
             .finally(() => setLoading(false));
@@ -67,6 +67,7 @@ function EditNewsModal() {
             modals.closeAll();
         })
         .catch(err => {
+            setError('Erro ao editar notícia.');
             console.error('Unhandled error when editing news.', err);
         })
         .finally(() => setButtonLoading(false));
@@ -130,6 +131,7 @@ function EditNewsModal() {
                 label='Texto Alternativo'
                 {...form.getInputProps('alt')}
             />
+            {error && <Text c='red'>{error}</Text>}
             <Button type='submit' loading={buttonLoading} bg='blue'>
                 SALVAR
             </Button>

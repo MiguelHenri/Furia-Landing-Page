@@ -3,7 +3,7 @@ VALUES (
     'VCT AMERICAS 2024 - Stage 2', 
     'FURIA Esports', 
     'Leviatán', 
-    '2024-08-20 15:00:00', 
+    '2024-08-22 15:00:00', 
     'VALORANT'
 );
 
@@ -12,7 +12,7 @@ VALUES (
     'VCT AMERICAS 2024 - Stage 2', 
     'FURIA Esports', 
     'G2 Esports', 
-    '2024-08-22 19:00:00', 
+    '2024-08-24 19:00:00', 
     'VALORANT'
 );
 
@@ -21,7 +21,16 @@ VALUES (
     'VCT AMERICAS 2024 - Stage 2', 
     'FURIA Esports', 
     '100 Thieves', 
-    '2024-08-24 22:00:00', 
+    '2024-08-26 22:00:00', 
+    'VALORANT'
+);
+
+INSERT INTO matches (tournament, player1, player2, date, icon)
+VALUES (
+    'VCT AMERICAS 2024 - Stage 2', 
+    'FURIA Esports', 
+    'Sentinels', 
+    '2024-08-28 00:00:00', 
     'VALORANT'
 );
 
