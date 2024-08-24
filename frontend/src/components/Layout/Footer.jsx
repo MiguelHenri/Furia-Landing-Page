@@ -34,7 +34,7 @@ function Footer() {
     )
 
     const socialData = [
-        {icon: <Image src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png' h={50}/>, link: ''},
+        {icon: <Image src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png' h='50px'/>, link: ''},
         {icon: <IconBrandInstagram stroke={2} width={30} height={30}/>, link: 'https://www.instagram.com/furiagg/'},
         {icon: <IconBrandX stroke={2} width={30} height={30}/>, link: 'https://x.com/FURIA'},
         {icon: <IconBrandFacebook stroke={2} width={30} height={30}/>, link: 'https://www.facebook.com/furiagg/'},

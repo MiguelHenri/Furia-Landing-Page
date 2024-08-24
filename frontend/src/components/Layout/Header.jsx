@@ -34,7 +34,7 @@ function Header() {
             <Anchor href="">
                 <Image 
                     src='https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png'
-                    h={50}
+                    h='50px'
                 />
             </Anchor>
             <Anchor href="https://furia.gg/">
