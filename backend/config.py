@@ -11,7 +11,8 @@ class Config:
 
     FLASK_HOST = os.getenv('FLASK_HOST')
     UPLOAD_FOLDER = 'images'
-    STATIC_URL_PATH = '/uploads'
+    FRONTEND_FOLDER = '../frontend/dist'
+    STATIC_URL_PATH = '/'
     MAX_CONTENT_LENGTH = 1024 * 1024 # 1MB
 
 class AdminConfig:
