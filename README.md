@@ -1,6 +1,6 @@
 # 🖤 Furia-Landing-Page
 
-Developing a landing page for the FURIA website.
+Developing a landing page for FURIA's website. The page was previously deployed on [Render](https://render.com/).
 
 ## 📚 Docs
 
@@ -9,62 +9,23 @@ The landing page documentation includes the following:
 - System Design Document (SDD): describes the architecture and system design.
 - Software Requirements Specification (SRS): outlines the requirements for the development of the system.
 - Figma Prototype: mobile-first designed static page prototype.
+- Demo Video: a link to the demonstrative video.
 
 ## 💻 Techs
 
 This site uses Vite, React, PostgreSQL, and Flask.
 
-## Frontend
+## 🎮 How to Run
 
-In the `/frontend` directory, install all dependencies by running:
+Make sure you have all `.env` files configured correctly. Take a look at `.env.example`.
 
+In the `backend` directory, build the website by running the following:
 ```bash
-$ npm install
+$ (pip install -r requirements.txt) && (cd ../frontend && npm install && npm run build)
 ```
+> You may use a python environment.
 
-Then, start the frontend server by running:
-
+Now, again in the `backend` directory, run the website:
 ```bash
-$ npm run dev
-```
-
-## Postgres
-
-Make sure you have PostgreSQL installed:
-```bash
-$ sudo apt install postgresql postgresql-contrib
-$ sudo service postgresql start
-```
-
-Create and populate the table:
-```bash
-$ sudo -i -u <username>
-$ psql -U <username> -d <database_name> -a -f /<path>/sql/create_table.sql
-$ psql -U <username> -d <database_name> -a -f /<path>/sql/populate.sql
-```
-- Check this [link](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart) for help, if needed.
-
-## Backend
-
-In the `/backend` directory, create a Python environment:
-
-```bash
-$ python3 -m venv .venv
-```
-
-Activate the environment and install the dependencies:
-
-```bash
-$ . .venv/bin/activate
-$ pip install -r requirements.txt
-```
-
-Make sure to create the super admin account:
-```bash
-$ python3 create_admin.py
-```
-
-Then, start the backend server by running:
-```bash
-$ flask run
+$ gunicorn -w 4 app:app
 ```

@@ -6,7 +6,7 @@
 This document describes the architecture and design of FURIA's landing page.
 
 ### 1.2 Scope
-In an ideal scenario, the system will feature a carousel displaying recent news, integration with third-party APIs for game schedules, a newsletter registration form, and web scraping for the latest store items. Since it is too much for a prototype, all features except the newsletter registration will be out of scope for now, the others will use mock data.
+In an ideal scenario, the system will feature a carousel displaying recent news, integration with third-party APIs for game schedules, a newsletter registration form, and web scraping for the latest store items. The landing page includes administrator login and authentication, and the admin can change the page data in real time. Since it is too much for a prototype, all features will be out of scope for now or will use mock data.
 
 ## 2. System Architecture
 
@@ -30,6 +30,7 @@ A high-level description of the system architecture including main components an
     - DB Model: Table with users email and names.
     - API Endpoint: POST /api/newsletter/register – Adds email to the subscriber list.
     - Backend: Store email addresses in a database or email marketing service
+> Out of scope for now.
 
 ### 3.2 News Management
 - Requirements: Retrieve and display news articles posted by administrators.
