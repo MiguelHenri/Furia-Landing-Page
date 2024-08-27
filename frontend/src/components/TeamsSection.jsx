@@ -48,7 +48,7 @@ function TeamsSection() {
     return (
         <>
         <Title ml='2vw' mb='20px' mt='50px'>
-            Nossos Times
+            Times
         </Title>
         <Center>
             <SimpleGrid cols={{base: 1, xs: 2}}>

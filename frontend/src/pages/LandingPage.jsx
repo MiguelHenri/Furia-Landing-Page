@@ -15,7 +15,7 @@ function LandingPage() {
             <StoreSection/>
 
             <Title ml='2vw' mt='50px'>
-                Proximos jogos
+                Próximos jogos
             </Title>
             <Center mt='20px'>
                 <MatchesCarousel/>
